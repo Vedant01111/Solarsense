@@ -1,0 +1,18 @@
+:root { --bg:#f7f5ef; --card:#fff; --ink:#2b2a26; --muted:#7a7566; --line:#e4dfd2; --sun:#d98a00; --bad:#b3261e; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --bg:#1d1c19; --card:#272622; --ink:#f1eee6; --muted:#a9a393; --line:#3a382f; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui, sans-serif; }
+.page { max-width:980px; margin:0 auto; padding:24px 16px 48px; display:grid; gap:16px; }
+h1 { margin:0; } h2 { margin:0 0 12px; font-size:1.1rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; }
+label { display:grid; gap:4px; margin-bottom:10px; font-size:.9rem; }
+input, select { padding:8px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); font:inherit; }
+button { padding:8px 14px; border:0; border-radius:6px; background:var(--sun); color:#1d1c19; font:inherit; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.6; cursor:wait; } button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid var(--sun); outline-offset:2px; }
+dl { display:grid; grid-template-columns:auto 1fr; gap:4px 12px; margin:0 0 8px; } dt { color:var(--muted); } dd { margin:0; font-weight:600; }
+.muted { color:var(--muted); } .error { color:var(--bad); }
+.row { display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:8px; } .row input { flex:1; }
+.ai { background:var(--bg); border-left:3px solid var(--sun); padding:8px 10px; } .ai small { display:block; color:var(--muted); margin-top:4px; }
+.alerts { list-style:none; padding:0; margin:0; display:grid; gap:8px; } .alerts li { border-left:3px solid var(--sun); padding-left:10px; } .alerts li.high { border-color:var(--bad); }
+.chat { min-height:90px; max-height:220px; overflow:auto; margin-bottom:8px; } .chat p { margin:4px 0; } .chat .user { font-weight:600; }
