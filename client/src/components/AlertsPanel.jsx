@@ -5,7 +5,12 @@ export default function AlertsPanel() {
   const [alerts, setAlerts] = useState([]);
   const [advice, setAdvice] = useState({});
 
-  useEffect(() => { getAlerts().then(setAlerts).catch(() => {}); }, []);
+  useEffect(() => {
+    const load = () => getAlerts().then(setAlerts).catch(() => {});
+    load();
+    const id = setInterval(load, 3000);
+    return () => clearInterval(id);
+  }, []);
 
   async function onAdvise(alert) {
     const { text } = await advise(alert);

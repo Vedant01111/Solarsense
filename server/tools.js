@@ -3,7 +3,11 @@ import { readings } from './simulator.js';
 import { getAlerts } from './alerts.js';
 import { ASSUMPTIONS } from './calculations.js';
 
-export const lastDays = (days) => readings.filter((r) => new Date(r.ts).getTime() >= Date.now() - days * 86400e3);
+// "Last N days" is measured from the newest reading, because the simulated clock runs ahead of real time.
+export const lastDays = (days) => {
+  const cutoff = new Date(readings.at(-1).ts).getTime() - days * 86400e3;
+  return readings.filter((r) => new Date(r.ts).getTime() >= cutoff);
+};
 
 export function dailyTotals(days = 7) {
   const m = {};
